@@ -126,11 +126,13 @@ class Game:
         boxes_to_check = dict((k, v) for k, v in all_boxes_coords.items()
                               if any(v == line for line in lines_to_check))
         counter = Counter()
-        for box in boxes_to_check.values(): counter[box] += 1
+        for box in boxes_to_check.values():
+            counter[box] += 1
         complete_lines = [k for k, v in counter.items()
                           if v == (Game.WIDTH / Shape.BOX_SIZE)]
 
-        if not complete_lines: return False
+        if not complete_lines:
+            return False
 
         for k, v in boxes_to_check.items():
             if v in complete_lines:
