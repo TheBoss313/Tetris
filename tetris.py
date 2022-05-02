@@ -6,7 +6,7 @@ from tkinter import Canvas, Label, Tk, StringVar, messagebox
 
 class Game:
     WIDTH = 300
-    HEIGHT = 500
+    HEIGHT = WIDTH * 2
 
     def __init__(self):
         """Starts the game.
@@ -34,6 +34,7 @@ class Game:
         self.create_new_game = True
 
         self.root = Tk()
+        self.root.geometry(f"{Game.WIDTH}x{Game.HEIGHT}")
         self.root.title("Tetris")
 
         self.status_var = StringVar()
@@ -153,7 +154,7 @@ class Game:
 
 class Shape:
     """Defines a tetris shape."""
-    BOX_SIZE = 20
+    BOX_SIZE = Game.WIDTH/10
     # START_POINT relies on screwy integer arithmetic to approximate the middle
     # of the canvas while remaining correctly on the grid.
     START_POINT = Game.WIDTH / 2 / BOX_SIZE * BOX_SIZE - BOX_SIZE
